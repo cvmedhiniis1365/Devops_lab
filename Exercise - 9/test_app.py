@@ -1,4 +1,3 @@
-@'
 import unittest
 from app import app
 
@@ -15,4 +14,3 @@ class TestApp(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-'@ | Set-Content -Encoding utf8 ".\Exercise - 9\test_app.py"
