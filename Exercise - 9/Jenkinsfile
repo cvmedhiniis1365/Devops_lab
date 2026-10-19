@@ -1,4 +1,3 @@
-@'
 pipeline {
     agent any
 
@@ -88,4 +87,3 @@ assert body == 'Hello, Jenkins Multi-Stage Pipeline!'
         }
     }
 }
-'@ | Set-Content -Encoding utf8 ".\Exercise - 9\Jenkinsfile"
