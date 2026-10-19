@@ -1,0 +1,28 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appa-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: appa
+  template:
+    metadata:
+      labels:
+        app: appa
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  app: appa
+              topologyKey: kubernetes.io/hostname
+      containers:
+        - name: appa
+          image: appa:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000

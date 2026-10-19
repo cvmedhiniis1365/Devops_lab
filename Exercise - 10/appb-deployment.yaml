@@ -1,0 +1,28 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appb-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: appb
+  template:
+    metadata:
+      labels:
+        app: appb
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  app: appb
+              topologyKey: kubernetes.io/hostname
+      containers:
+        - name: appb
+          image: appb:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
